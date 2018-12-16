@@ -1,0 +1,16 @@
+
+<input [formControl]="formControl"><!-- Quelle -->
+Online: {{online$ | async}}
+{{online$ | async}}
+ {{online$ | async}}
+{{online$ | async}}
+{{online$ | async}}
+{{online$ | async}} 
+<table class="table table-striped"> <!-- Senke -->
+  <tr *ngFor="let f of flights$ | async">
+    <td>{{f.id}}</td>
+    <td>{{f.from}}</td>
+    <td>{{f.to}}</td>
+    <td>{{f.date | date}}</td>
+  </tr>
+</table>

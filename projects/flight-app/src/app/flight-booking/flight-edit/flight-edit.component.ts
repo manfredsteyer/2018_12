@@ -13,6 +13,10 @@ export class FlightEditComponent implements OnInit {
   constructor(private route: ActivatedRoute) {
   }
 
+  remove() {
+    console.debug('Remove!!!!!');
+  }
+
   ngOnInit() {
     this.route.params.subscribe(p => {
       this.id = p['id'];

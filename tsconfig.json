@@ -19,6 +19,8 @@
     "paths": {
       "@flight-workspace/flight-api": [
         "projects/flight-api/src/public_api"
+        // "dist/projects/flight-api/src/public_api"
+        // "projects/flight-api/cust-a/src/public_api"
       ],
       "@my/logger-lib": [
         "projects/logger-lib/src/public_api"

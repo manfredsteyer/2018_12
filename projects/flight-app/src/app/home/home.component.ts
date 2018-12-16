@@ -1,3 +1,4 @@
+import { AuthService } from './../shared/auth/auth.service';
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 
@@ -9,7 +10,9 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute) {
+  constructor(
+    private authService: AuthService,
+    private route: ActivatedRoute) {
   }
 
   needsLogin: boolean;
@@ -20,15 +23,15 @@ export class HomeComponent implements OnInit {
   }
 
   get userName(): string {
-    return this._userName;
+    return this.authService.userName;
   }
 
   login(): void {
-    this._userName = 'Login will be implemented in another exercise!'
+    this.authService.login();
   }
 
   logout(): void {
-    this._userName = '';
+    this.authService.logout();
   }
 
 

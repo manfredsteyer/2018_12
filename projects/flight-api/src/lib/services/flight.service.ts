@@ -1,8 +1,9 @@
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 
-import {Observable, of} from 'rxjs';
+import {Observable, of, ConnectableObservable} from 'rxjs';
 import {Flight} from '../models/flight';
+import { publish, delay } from 'rxjs/operators';
 
 
 @Injectable()
@@ -17,12 +18,12 @@ export class FlightService {
 
   load(from: string, to: string, urgent: boolean): void {
     this.find(from, to, urgent)
-      .subscribe(
-        flights => {
-          this.flights = flights;
-        },
-        err => console.error('Error loading flights', err)
-      );
+        .subscribe(
+          flights => {
+            this.flights = flights;
+          },
+          err => console.error('Error loading flights', err)
+        );
   }
 
   find(from: string, to: string, urgent: boolean = false): Observable<Flight[]> {
@@ -45,7 +46,7 @@ export class FlightService {
       .set('Accept', 'application/json');
 
     const reqObj = {params, headers};
-    return this.http.get<Flight[]>(url, reqObj);
+    return this.http.get<Flight[]>(url, reqObj); //.pipe(delay(4000));
     // return of(flights).pipe(delay(this.reqDelay))
 
   }
